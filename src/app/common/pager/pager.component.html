@@ -1,0 +1,14 @@
+<div class="pagination cf" *ngIf="count > 0">
+    <div class="description left">
+        <span class="page-counts">{{ getMin() }} - {{ getMax() }} of Total Shippments: {{ count }}</span>
+    </div>
+    <div class="numbers right">
+        <button class="link button-clear min" (click)="onPrev()" [disabled]="page === 1 || loading" [ngClass]="{ 'disabled': page === 1 || loading }">&lt; prev</button>
+        <button
+            *ngFor="let pageNum of getPages()"
+            (click)="onPage(pageNum)"
+            [ngClass]="{'active': pageNum === page, 'disabled': loading}" class="button-clear min">{{ pageNum }}</button>
+
+        <button class="link button-clear min" (click)="onNext(true)" [disabled]="lastPage() || loading" [ngClass]="{ 'disabled': lastPage() || loading }">Next &gt;</button>
+    </div>
+</div>
